@@ -7,7 +7,7 @@
         protected $DBchar;
         protected $DBoptions;
         protected $DSN;
-        public $PDO = null;
+        public $PDO;
         
         public function __construct() {
             $this->$DSN = "mysql:host=$DBhost;DBname=$DBname;charset=$DBchar";
@@ -22,14 +22,17 @@
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             );
-        }
-
-        public function PDO() {
             try {
                 $this->$PDO = new PDO($DSN, $DBuser, $DBpass, $options);
             } catch (PDOException $error) {
                 return null;
                 die($error->getMessage());
+            }
+        }
+
+        public function PDO() {
+            if ($PDO) {
+                return $PDO;
             }
         }
     }

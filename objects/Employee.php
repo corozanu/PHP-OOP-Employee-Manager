@@ -6,9 +6,11 @@
         public $gender;
         public $position;
         public $salary;
-        public $state = array();
+        public $status = array();
+        public $username;
+        protected $password;
 
-        function addEmployee() {
+        public function __construct($employeeData = array()) {
             
         }
     }
