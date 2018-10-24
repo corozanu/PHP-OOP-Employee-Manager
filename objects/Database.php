@@ -33,6 +33,8 @@
         public function PDO() {
             if ($PDO) {
                 return $PDO;
+            } else {
+                return null;
             }
         }
     }

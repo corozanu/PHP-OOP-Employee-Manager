@@ -27,17 +27,26 @@
         public $salary;
         public $status = array();
         public $username;
-        protected $password;
+        public $password;
 
+        /* 
         public function __construct() {
             
+        }*/
+
+        public function statusAdd($statusKey, $statusValue) {
+            if (in_array($statusKey)) {
+                return null;
+            } else {
+                $status[$statusKey] = $statusValue;
+            }
         }
 
         public function statusUpdate($statusUpdate) {
             if (in_array($statusUpdate, $status)) {
                 return null;
             } else {
-                $this->$status[count($status)] = $statusUpdate;
+                $this->$status[/*count($status)*/] = $statusUpdate;
             }
         }
 
