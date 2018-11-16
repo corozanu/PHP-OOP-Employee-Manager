@@ -20,14 +20,17 @@
     class Employee {
         use basic;
         public $first_name;
+        public $middle_name;
         public $last_name;
         public $age;
         public $gender;
         public $position;
         public $salary;
+        public $salary_type;
         public $status = array();
         public $username;
         public $password;
+        public $email;
 
         /* 
         public function __construct() {
