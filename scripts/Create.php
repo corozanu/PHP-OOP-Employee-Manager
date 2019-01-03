@@ -32,9 +32,10 @@
             } else {
                 $newPosition = false;
             }
-
+            
         }
-    } else if (isset($_POST['admin-submit'])) {
-
+    } else {
+        header("Location: ../pages/create_page.php");
+        exit();
     }
 ?>

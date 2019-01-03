@@ -4,6 +4,8 @@
         <title>PHP-Employee-Manager-OOP</title>
         <link href="scripts/css/main.css" rel="stylesheet" type="text/css">
         <script src="scripts/js/main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <!-- Objects -->
         <?php
             include_once 'objects/Database.php';
@@ -25,11 +27,22 @@
                 <?php endif; ?>
             </nav>
         </div>
+        <div id="login-box" style="display: none">
+            <h2>Login</h2>
+            <i class="fas fa-times" style="font-size: 15px; color: black;"></i>
+            <form method="post" action="scripts/login.php">
+                <label for="username">Username/Email: </label>
+                <input type="text" name="username">
+                <label for="password">Password: </label>
+                <input type="password" name="password">
+            </form>
+        </div>
         <div id="dashboard">
             <p id="datetime"></p>
             <div class="dashboard-item">
                 <p>Announcements</p>
                 <?php 
+                    // Add Sort-by system (sort by newest, most important, etc.)
                     // Display Announcements
                 ?>
             </div>
