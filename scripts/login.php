@@ -1,6 +1,8 @@
 <?php
     if (isset($_POST['login-submit'])) {
-        $Database = new Database;
+        include_once '../objects/Database.php';
+        include_once '../objects/Employee.php';
+        $Database = new Database();
         $PDO = $Database->PDO();
         $usernameInput = $_POST['login-username'];
         $password = $_POST['login-password'];

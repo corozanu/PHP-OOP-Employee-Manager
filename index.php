@@ -32,9 +32,10 @@
             <i class="fas fa-times" style="font-size: 15px; color: black;"></i>
             <form method="post" action="scripts/login.php">
                 <label for="username">Username/Email: </label>
-                <input type="text" name="username">
+                <input type="text" name="login-username">
                 <label for="password">Password: </label>
-                <input type="password" name="password">
+                <input type="password" name="login-password">
+                <button type="submit" name="login-submit">Submit</button>
             </form>
         </div>
         <div id="dashboard">

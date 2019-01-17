@@ -9,7 +9,7 @@
         protected $DSN;
         public $PDO;
         
-        public function __construct() {
+        public function _construct() {
             $this->$DSN = "mysql:host=$DBhost;DBname=$DBname;charset=$DBchar";
             $this->$DBname = 'PHP-Employee-Manager-O';
             $this->$DBuser = 'root';
@@ -21,20 +21,19 @@
                 PDO::ATTR_EMULATE_PREPARES   => false,
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-            );
-            try {
-                $this->$PDO = new PDO($DSN, $DBuser, $DBpass, $options);
-            } catch (PDOException $error) {
-                return null;
-                die($error->getMessage());
-            }
+            ); 
         }
 
         public function PDO() {
-            if ($PDO) {
-                return $PDO;
+            if ($this->$PDO) {
+                return $this->$PDO;
             } else {
-                return null;
+                try {
+                    $this->$PDO = new PDO($DSN, $DBuser, $DBpass, $options);
+                } catch (PDOException $error) {
+                    return null;
+                    echo 'error';
+                }
             }
         }
     }
