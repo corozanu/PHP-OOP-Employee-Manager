@@ -2,6 +2,7 @@
   // Configuration file
   // Fill in your database details here
   
+  DEFINE("SQLDB", "database");
   DEFINE("SQLUSER", "root");
   DEFINE("SQLPASS", "toor");
   DEFINE("SQLHOST", "localhost");
