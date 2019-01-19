@@ -1,9 +1,9 @@
 <?php
+    require '../objects/Database.php';
     if (isset($_POST['login-submit'])) {
-        include_once '../objects/Database.php';
-        include_once '../objects/Employee.php';
-        $Database = new Database();
-        $PDO = $Database->PDO();
+        require '../objects/Employee.php';
+        $database = new Database(SQLDB, SQLUSER, SQLPASS, SQLHOST, SQLCHAR, SQLOPTIONS);
+        $PDO = $database->PDO(); // When you name variables, unless they are constants, don't capitalize the first letter. camelCase should be followed.
         $usernameInput = $_POST['login-username'];
         $password = $_POST['login-password'];
 
@@ -17,6 +17,7 @@
                     $stmt = "SELECT * FROM `users` WHERE `email`=?";
                     if (!$PDO->prepare($stmt)->execute([$usernameInput])) {
                         throw new Exception;
+                        // You probably want to exit at this point.
                     }
                 } catch (Exception $e) {
                     header("Location: ../index.php?login=error");
@@ -30,6 +31,7 @@
                         $stmt = "SELECT `password` FROM `users` WHERE `email`=?";
                         if (!$PDO->prepare($stmt)->execute([$usernameInput])) {
                             throw new Exception;
+                            // Again, might want to exit.
                         }
                     } catch (Exception $e) {
                         header("Location: ../index.php?login=error");
@@ -70,6 +72,7 @@
                         $stmt = "SELECT `password` FROM `users` WHERE `username`=?";
                         if (!$PDO->prepare($stmt)->execute([$usernameInput])) {
                             throw new Exception;
+                            // Exit here?
                         }
                     } catch (Exception $e) {
                         header("Location: ../index.php?login=error");
@@ -81,8 +84,8 @@
                         exit();
                     } else if (password_verify($password, $row) == true) {
                         $stmt = $PDO->query("SELECT * FROM `users` WHERE `username`=$usernameInput AND `password`=$password");
-                        $row = $stmt->fetch();
-                        $_SESSION['username'] = $row['username'];
+                        $row = $stmt->fetch(); // You verify the password twice?
+                        $_SESSION['username'] = $row['username']; 
                         $_SESSION['email'] = $row['email'];
                         $_SESSION['first_name'] = $row['first_name'];
                         $_SESSION['last_name'] = $row['last_name'];
